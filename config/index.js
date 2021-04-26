@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const config = {
 	appPort: process.env.PORT,
+	jwtSecret: process.env.JWT_SECRET,
 	postgre: {
 		host: process.env.PG_HOST,
 		port: process.env.PG_PORT,

@@ -1,60 +1,16 @@
-const { jwt, bcrypt, logs } = require('../../lib');
-const { checkUser, getUser } = require('./repo');
+const { bcrypt, logs } = require('../../lib');
+const { createUser } = require('./repo');
 
-const getLoggedIn = async (id) => {
+const createNewUser = async (username, password, name, role) => {
 	try {
-		let user = await getUser(id);
+		const hashPassword = await bcrypt.hash(password);
+		const result = await createUser(username, hashPassword, name, role);
 		return {
 			code: 200,
 			result: {
 				status: 'success',
-				data: { user },
-			},
-		};
-	} catch (err) {
-		logs.error(err.message);
-		return {
-			code: 500,
-			result: {
-				status: 'error',
-				message: err.message,
-			},
-		};
-	}
-};
-
-const passwordIsMatch = async (username, password) => {
-	try {
-		let user = await checkUser(username);
-		const wrongUserPass = {
-			code: 401,
-			result: {
-				status: 'error',
-				message: 'incorrect username or password',
-			},
-		};
-		if (!user) {
-			return wrongUserPass;
-		}
-		const isMatch = await bcrypt.compare(password, user.password);
-		if (!isMatch) {
-			return wrongUserPass;
-		}
-		const payload = {
-			user: {
-				id: user.id,
-				role: user.role,
-			},
-		};
-		const token = jwt.sign(payload);
-		return {
-			code: 200,
-			result: {
-				status: 'success',
-				data: {
-					token: 'Bearer ' + token,
-				},
-				message: 'token created',
+				data: { user: result },
+				message: 'user Created',
 			},
 		};
 	} catch (err) {
@@ -70,6 +26,5 @@ const passwordIsMatch = async (username, password) => {
 };
 
 module.exports = {
-	passwordIsMatch,
-	getLoggedIn,
+	createNewUser,
 };

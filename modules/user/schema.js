@@ -2,6 +2,7 @@ const Joi = require('joi');
 
 const userSchema = {
 	username: Joi.string().min(6).empty().required(),
+	name: Joi.string().empty().required(),
 	role: Joi.string().valid('user', 'admin'),
 	password: Joi.string()
 		.pattern(

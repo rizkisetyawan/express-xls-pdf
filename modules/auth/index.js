@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { validate, hasRole } = require('../../middleware');
 const { loginSchema } = require('./schema');
-const { passwordIsMatch } = require('./service');
+const { passwordIsMatch, getLoggedIn } = require('./service');
 
 router.get('/', hasRole('admin'), async (req, res) => {
 	const { code, result } = await getLoggedIn(req.user.id);

@@ -1,6 +1,4 @@
-const {
-  pg: { pool },
-} = require('../../lib');
+const { pool } = require('../../lib/pg');
 
 const createUser = async (username, hashPassword, name, role) => {
   const text = 'INSERT INTO users (username, password, name, role) VALUES($1, $2, $3, $4) RETURNING *';

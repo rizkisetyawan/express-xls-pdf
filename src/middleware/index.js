@@ -1,4 +1,5 @@
-const { joi, jwt } = require('../lib');
+const joi = require('../lib/joi');
+const jwt = require('../lib/jwt');
 
 function hasRole(...role) {
   const checkToken = async (req, res, next) => {

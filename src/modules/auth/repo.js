@@ -1,6 +1,4 @@
-const {
-  pg: { pool },
-} = require('../../lib');
+const { pool } = require('../../lib/pg');
 
 const checkUser = async (username) => {
   const text = 'SELECT * FROM users WHERE username = $1';

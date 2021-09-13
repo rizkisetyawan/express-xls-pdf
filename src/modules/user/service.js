@@ -1,4 +1,4 @@
-const { bcrypt } = require('../../lib');
+const bcrypt = require('../../lib/bcrypt');
 const { createUser } = require('./repo');
 
 const createNewUser = async (username, password, name, role) => {

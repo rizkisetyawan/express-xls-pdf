@@ -1,4 +1,5 @@
-const { jwt, bcrypt } = require('../../lib');
+const jwt = require('../../lib/jwt');
+const bcrypt = require('../../lib/bcrypt');
 const { checkUser, getUser } = require('./repo');
 
 const getLoggedIn = async (id) => {

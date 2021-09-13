@@ -4,16 +4,14 @@ const { postgre } = require('../../config');
 
 const pool = new pg.Pool(postgre);
 
-const checkPool = () => {
-  pool
-    .query('SELECT NOW()')
-    .then(() => {
-      logs.info('db postgres connected');
-    })
-    .catch((err) => {
-      logs.error(err.message);
-    });
-};
+pool
+  .query('SELECT NOW()')
+  .then(() => {
+    logs.info('db POSTGRE connected');
+  })
+  .catch((err) => {
+    logs.error(err.message);
+  });
 
 const endPool = () => {
   pool.end(() => {
@@ -23,6 +21,5 @@ const endPool = () => {
 
 module.exports = {
   pool,
-  checkPool,
   endPool,
 };

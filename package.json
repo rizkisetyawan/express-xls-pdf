@@ -1,26 +1,20 @@
 {
-  "name": "boilerplate-expressjs",
+  "name": "express-excel-pdf",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
     "test": "jest --watch --detectOpenHandles",
-    "lint": "eslint --fix .",
-    "pg-migration": "node ./src/lib/pg/migration.js"
+    "lint": "eslint --fix ."
   },
   "dependencies": {
-    "@godaddy/terminus": "^4.7.1",
-    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
     "dotenv": "^8.2.0",
+    "excel4node": "^1.7.2",
     "express": "~4.16.1",
-    "joi": "^17.4.0",
-    "jsonwebtoken": "^8.5.1",
-    "moment": "^2.29.1",
     "morgan": "~1.9.1",
-    "pg": "^8.6.0"
+    "pdfmake": "^0.2.2"
   },
   "jest": {
     "testEnvironment": "node",
